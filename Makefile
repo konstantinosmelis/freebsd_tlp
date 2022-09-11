@@ -1,9 +1,10 @@
-SRCS=acpi_call.c opt_acpi.h
-KMOD=acpi_call
+SRCS=tlp.c
+KMOD=freebsd_tlp
 
-UTIL_SRCS=acpi_call_util.c
+ACPI_UTILS_SRCS=acpi_call_utils.c
+TLP_UTILS_SRCS=tlp_utils.c
 
-util:
-	${CC} ${UTIL_SRCS} -I /sys -o acpi_call
+tlp:
+	${CC} ${ACPI_UTILS_SRCS} ${TLP_UTILS_SRCS} -I /sys -o tlp
 
 .include <bsd.kmod.mk>
